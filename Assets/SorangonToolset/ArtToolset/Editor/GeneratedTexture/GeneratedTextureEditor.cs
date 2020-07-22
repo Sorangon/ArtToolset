@@ -43,12 +43,14 @@ namespace SorangonToolset.ArtToolset.Editors {
             Texture2D tex = gt.GetTexture(true);
             tex.name = gt.name + "_Texture";
 
+            string path = AssetDatabase.GetAssetPath(gt);
+
+            AssetDatabase.CreateAsset(tex, "");
             AssetDatabase.AddObjectToAsset(tex, gt);
-            AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(gt));
+            AssetDatabase.ImportAsset(path);
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
 
-            m_textureProperty.SetValue(gt, tex);
             OnCreateTextureAsset();
         }
 

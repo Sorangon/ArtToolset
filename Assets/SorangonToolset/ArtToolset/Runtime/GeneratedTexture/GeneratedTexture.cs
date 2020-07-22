@@ -9,6 +9,10 @@ namespace SorangonToolset.ArtToolset {
         [SerializeField] protected Texture2D m_texture = null;
         #endregion
 
+        private void Awake() {
+            Debug.Log("Object initialized");
+        }
+
         #region Texture
         /// <summary>
         /// Returns the generated texture
