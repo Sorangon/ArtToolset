@@ -11,20 +11,13 @@ namespace SorangonToolset.ArtToolset.Editors {
     /// </summary>
     public abstract class GeneratedTextureEditor : Editor {
         #region Currents
-        private FieldInfo m_textureProperty = null;
         private MethodInfo m_computeTextureMethod = null;
         #endregion
 
         #region Callbacks
         private void OnEnable() {
             FindProperties();
-            m_textureProperty = typeof(GeneratedTexture).GetField("m_texture", BindingFlags.NonPublic | BindingFlags.Instance);
             m_computeTextureMethod = typeof(GeneratedTexture).GetMethod("ComputeTexture", BindingFlags.NonPublic | BindingFlags.Instance);
-
-            if(m_textureProperty.GetValue(target) == null) {
-                Debug.Log("Texture is null");
-                CreateTextureAsset();
-            }
         }
 
         public override void OnInspectorGUI() {
@@ -34,31 +27,41 @@ namespace SorangonToolset.ArtToolset.Editors {
 
         #region Initialization
         protected virtual void FindProperties() { }
-        protected virtual void Initialize() { }
         #endregion
 
         #region Texture
-        protected void CreateTextureAsset() {
-            GeneratedTexture gt = target as GeneratedTexture;
-            Texture2D tex = gt.GetTexture(true);
-            tex.name = gt.name + "_Texture";
-
+        /// <summary>
+        /// Create or just rename a target generated texture
+        /// </summary>
+        /// <param name="gt"></param>
+        internal static void SetupTextureAsset(GeneratedTexture gt) {
             string path = AssetDatabase.GetAssetPath(gt);
 
-            AssetDatabase.CreateAsset(tex, "");
-            AssetDatabase.AddObjectToAsset(tex, gt);
-            AssetDatabase.ImportAsset(path);
-            AssetDatabase.SaveAssets();
+            //Checks if the texture subobject already exists
+            Texture2D textureObject = null;
+            var assets = AssetDatabase.LoadAllAssetsAtPath(path);
+            for(int i = 0; i < assets.Length; i++) {
+                if(assets[i] is Texture2D) {
+                    textureObject = assets[i] as Texture2D;
+                    break;
+                }
+            }
+
+            if(textureObject == null) {
+                //Create a new one
+                textureObject = gt.GetTexture(true);
+                textureObject.name = gt.name + "_Texture";
+                AssetDatabase.AddObjectToAsset(textureObject, gt);
+            }
+
+            textureObject.name = gt.name + "_Texture";
             AssetDatabase.Refresh();
-
-            OnCreateTextureAsset();
+            AssetDatabase.SaveAssets();
         }
-
-        protected virtual void OnCreateTextureAsset() { }
-        #endregion
-
         protected void ComputeTexture() {
             m_computeTextureMethod.Invoke(target,null);
         }
+        #endregion
+
     }
 }

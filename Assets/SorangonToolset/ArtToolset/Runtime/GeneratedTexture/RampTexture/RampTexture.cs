@@ -8,7 +8,7 @@ namespace SorangonToolset.ArtToolset {
     /// <summary>
     /// An asset that generate a ramp texture from a gradient
     /// </summary>
-    [CreateAssetMenu(menuName = "Art Toolset/Ramp Texture", fileName = "NewRampTexture", order = 800)]
+    [CreateAssetMenu(menuName = "Art Toolset/Generated Texture/Ramp Texture", fileName = "NewRampTexture", order = 800)]
     public class RampTexture : GeneratedTexture {
         #region Settings
         [SerializeField, GradientUsage(true)] public Gradient ramp = new Gradient();
