@@ -10,7 +10,7 @@ namespace SorangonToolset.ArtToolset.Editors {
     /// The custom editor class of the Ramp Texture
     /// </summary>
     [CustomEditor(typeof(RampTexture))]
-    public class RampTextureEditor : GeneratedTextureEditor {
+    public class RampTextureEditor : GeneratedTexture1DEditor {
         #region Styles
         private GUIContent m_gradientLabelContent = new GUIContent("Ramp", "The gradient that will be computed into a ramp texture (RGBA)");
         #endregion
@@ -19,19 +19,19 @@ namespace SorangonToolset.ArtToolset.Editors {
         private SerializedProperty m_rampProperty = null;
 
         protected override void FindProperties() {
+            base.FindProperties();
             m_rampProperty = serializedObject.FindProperty("ramp");
         }
         #endregion
 
         #region Callbacks
-        public override void OnInspectorGUI() {
+        protected override void DrawInspector() {
             EditorGUI.BeginChangeCheck();
             EditorGUILayout.PropertyField(m_rampProperty, m_gradientLabelContent);
             if(EditorGUI.EndChangeCheck()) {
-                ComputeTexture();
+                SetComputeFlagUp();
             }
-
-            serializedObject.ApplyModifiedProperties();
+            base.DrawInspector();
         }
         #endregion
     }

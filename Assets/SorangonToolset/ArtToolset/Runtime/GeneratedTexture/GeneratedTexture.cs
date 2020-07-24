@@ -18,7 +18,11 @@ namespace SorangonToolset.ArtToolset {
         public Texture2D GetTexture(bool recompute = false) {
             bool generateTexture = ReferenceEquals(m_texture, null);
             if(generateTexture) {
+#if UNITY_EDITOR
+                UpdateTexture();
+#else
                 m_texture = CreateTexture();
+#endif
             }
 
             if(recompute || generateTexture) {
@@ -40,6 +44,12 @@ namespace SorangonToolset.ArtToolset {
         /// <returns></returns>
         protected abstract Texture2D CreateTexture();
         #endregion
+
+#if UNITY_EDITOR
+        private void UpdateTexture() {
+            m_texture = CreateTexture();
+        }
+#endif
     }
 }
 

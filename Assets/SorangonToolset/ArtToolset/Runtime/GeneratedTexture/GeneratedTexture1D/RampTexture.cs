@@ -9,25 +9,19 @@ namespace SorangonToolset.ArtToolset {
     /// An asset that generate a ramp texture from a gradient
     /// </summary>
     [CreateAssetMenu(menuName = "Art Toolset/Generated Texture/Ramp Texture", fileName = "NewRampTexture", order = 800)]
-    public class RampTexture : GeneratedTexture {
+    public class RampTexture : GeneratedTexture1D {
         #region Settings
         [SerializeField, GradientUsage(true)] public Gradient ramp = new Gradient();
+
         #endregion
 
         #region Texture
-        protected override void ComputeTexture() {
-            for(int i = 0; i < m_texture.width; i++) {
-                float ratio = (float)i / (float)m_texture.width;
-                m_texture.SetPixel(i, 0, ramp.Evaluate(ratio));
-            }
-
-            m_texture.Apply();
+        protected override TextureFormat GetTextureFormat() {
+            return TextureFormat.RGBAFloat;
         }
 
-        protected override Texture2D CreateTexture() {
-            return new Texture2D(512, 1, TextureFormat.RGBAFloat, false) {
-                wrapMode = TextureWrapMode.Clamp
-            };
+        protected override Color SampleTexture1D(float ratio) {
+            return ramp.Evaluate(ratio);
         }
         #endregion
     }

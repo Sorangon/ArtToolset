@@ -12,17 +12,45 @@ namespace SorangonToolset.ArtToolset.Editors {
     public abstract class GeneratedTextureEditor : Editor {
         #region Currents
         private MethodInfo m_computeTextureMethod = null;
+        private MethodInfo m_updateTextureMethod = null;
+        private bool m_computeTextureFlag = false;
+        private bool m_recreateTextureFlag = false;
         #endregion
 
         #region Callbacks
         private void OnEnable() {
             FindProperties();
             m_computeTextureMethod = typeof(GeneratedTexture).GetMethod("ComputeTexture", BindingFlags.NonPublic | BindingFlags.Instance);
+            m_updateTextureMethod = typeof(GeneratedTexture).GetMethod("UpdateTexture", BindingFlags.NonPublic | BindingFlags.Instance);
+            Undo.undoRedoPerformed += OnPerformUndoRedo;
         }
 
-        public override void OnInspectorGUI() {
-            //Do some stuff here with base class
+        private void OnDisable() {
+            Undo.undoRedoPerformed -= OnPerformUndoRedo;
         }
+
+        public override sealed void OnInspectorGUI() {
+            serializedObject.Update();
+
+            DrawInspector();
+
+            //TODO : Fix reference loss
+            //if(m_recreateTextureFlag) {
+            //    serializedObject.ApplyModifiedPropertiesWithoutUndo();
+            //    m_updateTextureMethod.Invoke(target, null);
+            //    SetupTextureAsset(target as GeneratedTexture);
+            //    m_recreateTextureFlag = false;
+            //}
+
+            if(m_computeTextureFlag) {
+                serializedObject.ApplyModifiedPropertiesWithoutUndo();
+                m_computeTextureMethod.Invoke(target, null);
+                m_computeTextureFlag = false;
+            }
+            serializedObject.ApplyModifiedProperties();
+        }
+
+        protected virtual void DrawInspector() {}
         #endregion
 
         #region Initialization
@@ -50,7 +78,6 @@ namespace SorangonToolset.ArtToolset.Editors {
             if(textureObject == null) {
                 //Create a new one
                 textureObject = gt.GetTexture(true);
-                textureObject.name = gt.name + "_Texture";
                 AssetDatabase.AddObjectToAsset(textureObject, gt);
             }
 
@@ -58,10 +85,21 @@ namespace SorangonToolset.ArtToolset.Editors {
             AssetDatabase.Refresh();
             AssetDatabase.SaveAssets();
         }
-        protected void ComputeTexture() {
-            m_computeTextureMethod.Invoke(target,null);
+
+        protected void SetComputeFlagUp() {
+            m_computeTextureFlag = true;
+        }
+
+        protected void SetRecreateTextureFlagUp() {
+            m_recreateTextureFlag = true;
         }
         #endregion
 
+        #region Undo
+        private void OnPerformUndoRedo() {
+            SetComputeFlagUp();
+            //SetRecreateTextureFlagUp();
+        }
+        #endregion
     }
 }
