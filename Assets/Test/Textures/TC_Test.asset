@@ -54,6 +54,7 @@ MonoBehaviour:
   m_Name: TC_Test
   m_EditorClassIdentifier: 
   m_texture: {fileID: -3731098755366664827}
+  m_recalculateOnLoad: 0
   m_mapping: 0
   m_invert: 0
   curve:

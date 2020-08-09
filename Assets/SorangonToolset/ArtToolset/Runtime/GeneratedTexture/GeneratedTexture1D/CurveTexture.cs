@@ -17,7 +17,11 @@ namespace SorangonToolset.ArtToolset {
 
         #region Texture
         protected override TextureFormat GetTextureFormat() {
+#if UNITY_ANDROID
+            return TextureFormat.RGBA32;
+#else
             return TextureFormat.R16;
+#endif
         }
 
         protected override Color SampleTexture1D(float ratio) {
@@ -25,7 +29,7 @@ namespace SorangonToolset.ArtToolset {
             value = Mathf.Clamp01(value);
             return Color.white * value;
         }
-        #endregion
+#endregion
     }
 }
 

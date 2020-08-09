@@ -17,7 +17,6 @@
         #region Drawing
         protected override void DrawInspector() {
             base.DrawInspector();
-            GUILayout.Space(8f);
 
             //TODO : Fix reference loss
             //EditorGUI.BeginChangeCheck();

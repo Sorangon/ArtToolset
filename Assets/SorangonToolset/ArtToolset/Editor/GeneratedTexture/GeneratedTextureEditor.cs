@@ -5,16 +5,27 @@ namespace SorangonToolset.ArtToolset.Editors {
     using UnityEngine;
     using UnityEditor;
     using System.Reflection;
+    using System.IO;
 
     /// <summary>
     /// The base class for Generated textures custom editors 
     /// </summary>
     public abstract class GeneratedTextureEditor : Editor {
+        #region Enums
+        public enum BakeFormat {
+            EXR,
+            JPEG,
+            PNG
+        }
+        #endregion
+
         #region Currents
         private MethodInfo m_computeTextureMethod = null;
         private MethodInfo m_updateTextureMethod = null;
+        private FieldInfo m_generatedTextureField = null;
+        private SerializedProperty m_recalculateOnLoad = null;
         private bool m_computeTextureFlag = false;
-        private bool m_recreateTextureFlag = false;
+        //private bool m_recreateTextureFlag = false;
         #endregion
 
         #region Callbacks
@@ -22,6 +33,8 @@ namespace SorangonToolset.ArtToolset.Editors {
             FindProperties();
             m_computeTextureMethod = typeof(GeneratedTexture).GetMethod("ComputeTexture", BindingFlags.NonPublic | BindingFlags.Instance);
             m_updateTextureMethod = typeof(GeneratedTexture).GetMethod("UpdateTexture", BindingFlags.NonPublic | BindingFlags.Instance);
+            m_generatedTextureField = typeof(GeneratedTexture).GetField("m_texture", BindingFlags.NonPublic | BindingFlags.Instance);
+            m_recalculateOnLoad = serializedObject.FindProperty("m_recalculateOnLoad");
             Undo.undoRedoPerformed += OnPerformUndoRedo;
         }
 
@@ -47,10 +60,20 @@ namespace SorangonToolset.ArtToolset.Editors {
                 m_computeTextureMethod.Invoke(target, null);
                 m_computeTextureFlag = false;
             }
+
+            //Separator
+            GUILayout.Space(20f);
+            GUILayout.Box(new GUIContent(), GUILayout.Height(3f), GUILayout.Width(EditorGUIUtility.currentViewWidth - 25f));
+            GUILayout.Space(6f);
+
+            DrawBakeButtons();
+            GUILayout.Space(6f);
+            EditorGUILayout.PropertyField(m_recalculateOnLoad);
+
             serializedObject.ApplyModifiedProperties();
         }
 
-        protected virtual void DrawInspector() {}
+        protected virtual void DrawInspector() { }
         #endregion
 
         #region Initialization
@@ -90,8 +113,67 @@ namespace SorangonToolset.ArtToolset.Editors {
             m_computeTextureFlag = true;
         }
 
-        protected void SetRecreateTextureFlagUp() {
-            m_recreateTextureFlag = true;
+        //protected void SetRecreateTextureFlagUp() {
+        //    m_recreateTextureFlag = true;
+        //}
+        #endregion
+
+        #region Panels
+        private void DrawBakeButtons() {
+            if(GUILayout.Button("Bake PNG")) {
+                BakeTexture(BakeFormat.PNG);
+            }
+
+            if(GUILayout.Button("Bake JPEG")) {
+                BakeTexture(BakeFormat.JPEG);
+            }
+
+            if(GUILayout.Button("Bake EXR")) {
+                BakeTexture(BakeFormat.EXR);
+            }
+        }
+        #endregion
+
+        #region Bake
+        private void BakeTexture(BakeFormat format) {
+            //Get save path
+            string extension = format.ToString();
+            string projectPath = EditorUtility.SaveFilePanelInProject("Bake texture" + extension, target.name, extension.ToLower(), "Bake the texture in " + extension + " format");
+            if(projectPath.Length <= 0) return;
+            string path = projectPath.Remove(0, 6); //Remove "Assets" characters
+            path = Application.dataPath + path; //Final path
+
+
+            //Encode texture
+            byte[] encodedTexture = { };
+            Texture2D srcTex = ((GeneratedTexture)target).GetTexture(true);
+            switch(format) {
+                case BakeFormat.PNG:
+                    encodedTexture = srcTex.EncodeToPNG();
+                    break;
+                case BakeFormat.JPEG:
+                    encodedTexture = srcTex.EncodeToJPG();
+                    break;
+                case BakeFormat.EXR:
+                    encodedTexture = srcTex.EncodeToEXR();
+                    break;
+            }
+
+            //Save texture
+            File.WriteAllBytes(path, encodedTexture);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+
+            //Select new texture
+            Texture newTex = AssetDatabase.LoadAssetAtPath(projectPath, typeof(Texture2D)) as Texture2D;
+            EditorGUIUtility.PingObject(newTex);
+            Selection.activeObject = newTex;
+            //bool wontReplace = EditorUtility.DisplayDialog("Replace references", "Would you replace all the references of the source generated texture to the baked one on assets ?", "No", "Replace");
+            //if(!wontReplace) {
+            //    string targetAssetPath = AssetDatabase.GetAssetPath(m_generatedTextureField.GetValue(target) as Texture2D);
+            //    Debug.Log("Replace all references to the texture at path : " + targetAssetPath);
+            //    Hash128 dependenciesHash = AssetDatabase.GetAssetDependencyHash(targetAssetPath);
+            //}
         }
         #endregion
 

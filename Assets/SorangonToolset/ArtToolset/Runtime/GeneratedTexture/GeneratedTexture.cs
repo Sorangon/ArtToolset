@@ -7,6 +7,15 @@ namespace SorangonToolset.ArtToolset {
     public abstract class GeneratedTexture : ScriptableObject {
         #region Data
         [SerializeField] protected Texture2D m_texture = null;
+        [SerializeField] private bool m_recalculateOnLoad = false;
+        #endregion
+
+        #region Callbacks
+        private void OnEnable() {
+            if(m_recalculateOnLoad) {
+                GetTexture(true);
+            }
+        }
         #endregion
 
         #region Texture
@@ -52,4 +61,3 @@ namespace SorangonToolset.ArtToolset {
 #endif
     }
 }
-
