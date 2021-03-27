@@ -7,7 +7,7 @@ namespace SorangonToolset.ArtToolset {
     /// <summary>
     /// A generated texture that only computed from a value on one dimension
     /// </summary>
-    public abstract class GeneratedTexture1D : GeneratedTexture{
+    public abstract class CurveTexture : GeneratedTexture{
         #region Enums
         public enum Mapping {
             Horizontal,
@@ -22,7 +22,7 @@ namespace SorangonToolset.ArtToolset {
 
         #region Texture
         protected override void ComputeTexture() {
-            int pixelCount = m_mapping == Mapping.Horizontal ? m_texture.width : m_texture.height;
+            int pixelCount = m_mapping == Mapping.Horizontal ? m_Texture.width : m_Texture.height;
             for(int i = 0; i < pixelCount; i++) {
                 float ratio = (float)i / (float)pixelCount;
 
@@ -31,13 +31,13 @@ namespace SorangonToolset.ArtToolset {
                 }
 
                 if(m_mapping == Mapping.Horizontal) {
-                    m_texture.SetPixel(i, 0, SampleTexture1D(ratio));
+                    m_Texture.SetPixel(i, 0, SampleTexture1D(ratio));
                 } else {
-                    m_texture.SetPixel(0, i, SampleTexture1D(ratio));
+                    m_Texture.SetPixel(0, i, SampleTexture1D(ratio));
                 }
             }
 
-            m_texture.Apply();
+            m_Texture.Apply();
         }
 
         protected override Texture2D CreateTexture() {
@@ -52,7 +52,7 @@ namespace SorangonToolset.ArtToolset {
         }
 
         protected abstract TextureFormat GetTextureFormat();
-        protected abstract Color SampleTexture1D(float ratio);
+        public abstract Color SampleTexture1D(float ratio);
         #endregion
     }
 }

@@ -9,7 +9,7 @@ namespace SorangonToolset.ArtToolset {
     /// An asset that generate a ramp texture from a gradient
     /// </summary>
     [CreateAssetMenu(menuName = "Art Toolset/Generated Texture/Ramp Texture", fileName = "NewRampTexture", order = 800)]
-    public class RampTexture : GeneratedTexture1D {
+    public class RampTexture : CurveTexture {
         #region Settings
         [SerializeField, GradientUsage(true)] public Gradient ramp = new Gradient();
 
@@ -20,7 +20,7 @@ namespace SorangonToolset.ArtToolset {
             return TextureFormat.RGBAFloat;
         }
 
-        protected override Color SampleTexture1D(float ratio) {
+        public override Color SampleTexture1D(float ratio) {
             return ramp.Evaluate(ratio);
         }
         #endregion

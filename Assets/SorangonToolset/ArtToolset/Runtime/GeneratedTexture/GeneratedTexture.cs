@@ -6,13 +6,13 @@ namespace SorangonToolset.ArtToolset {
 
     public abstract class GeneratedTexture : ScriptableObject {
         #region Data
-        [SerializeField] protected Texture2D m_texture = null;
-        [SerializeField] private bool m_recalculateOnLoad = false;
+        [SerializeField] protected Texture2D m_Texture = null;
+        [SerializeField] private bool m_RecalculateOnLoad = false;
         #endregion
 
         #region Callbacks
         private void OnEnable() {
-            if(m_recalculateOnLoad) {
+            if(m_RecalculateOnLoad) {
                 GetTexture(true);
             }
         }
@@ -25,12 +25,12 @@ namespace SorangonToolset.ArtToolset {
         /// <param name="recompute">Should the texture should be recomputed, in case a parameter had been changed</param>
         /// <returns></returns>
         public Texture2D GetTexture(bool recompute = false) {
-            bool generateTexture = ReferenceEquals(m_texture, null);
+            bool generateTexture = ReferenceEquals(m_Texture, null);
             if(generateTexture) {
 #if UNITY_EDITOR
                 UpdateTexture();
 #else
-                m_texture = CreateTexture();
+                m_Texture = CreateTexture();
 #endif
             }
 
@@ -38,7 +38,7 @@ namespace SorangonToolset.ArtToolset {
                 ComputeTexture();
             }
 
-            return m_texture;
+            return m_Texture;
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace SorangonToolset.ArtToolset {
 
 #if UNITY_EDITOR
         private void UpdateTexture() {
-            m_texture = CreateTexture();
+            m_Texture = CreateTexture();
         }
 #endif
     }

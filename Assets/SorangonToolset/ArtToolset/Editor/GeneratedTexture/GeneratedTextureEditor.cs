@@ -20,21 +20,21 @@ namespace SorangonToolset.ArtToolset.Editors {
         #endregion
 
         #region Currents
-        private MethodInfo m_computeTextureMethod = null;
-        private MethodInfo m_updateTextureMethod = null;
-        private FieldInfo m_generatedTextureField = null;
-        private SerializedProperty m_recalculateOnLoad = null;
-        private bool m_computeTextureFlag = false;
+        private MethodInfo m_ComputeTextureMethod = null;
+        private MethodInfo m_UpdateTextureMethod = null;
+        private FieldInfo m_GeneratedTextureField = null;
+        private SerializedProperty m_RecalculateOnLoad = null;
+        private bool m_ComputeTextureFlag = false;
         //private bool m_recreateTextureFlag = false;
         #endregion
 
         #region Callbacks
         private void OnEnable() {
             FindProperties();
-            m_computeTextureMethod = typeof(GeneratedTexture).GetMethod("ComputeTexture", BindingFlags.NonPublic | BindingFlags.Instance);
-            m_updateTextureMethod = typeof(GeneratedTexture).GetMethod("UpdateTexture", BindingFlags.NonPublic | BindingFlags.Instance);
-            m_generatedTextureField = typeof(GeneratedTexture).GetField("m_texture", BindingFlags.NonPublic | BindingFlags.Instance);
-            m_recalculateOnLoad = serializedObject.FindProperty("m_recalculateOnLoad");
+            m_ComputeTextureMethod = typeof(GeneratedTexture).GetMethod("ComputeTexture", BindingFlags.NonPublic | BindingFlags.Instance);
+            m_UpdateTextureMethod = typeof(GeneratedTexture).GetMethod("UpdateTexture", BindingFlags.NonPublic | BindingFlags.Instance);
+            m_GeneratedTextureField = typeof(GeneratedTexture).GetField("m_Texture", BindingFlags.NonPublic | BindingFlags.Instance);
+            m_RecalculateOnLoad = serializedObject.FindProperty("m_RecalculateOnLoad");
             Undo.undoRedoPerformed += OnPerformUndoRedo;
         }
 
@@ -55,10 +55,10 @@ namespace SorangonToolset.ArtToolset.Editors {
             //    m_recreateTextureFlag = false;
             //}
 
-            if(m_computeTextureFlag) {
+            if(m_ComputeTextureFlag) {
                 serializedObject.ApplyModifiedPropertiesWithoutUndo();
-                m_computeTextureMethod.Invoke(target, null);
-                m_computeTextureFlag = false;
+                m_ComputeTextureMethod.Invoke(target, null);
+                m_ComputeTextureFlag = false;
             }
 
             //Separator
@@ -68,7 +68,7 @@ namespace SorangonToolset.ArtToolset.Editors {
 
             DrawBakeButtons();
             GUILayout.Space(6f);
-            EditorGUILayout.PropertyField(m_recalculateOnLoad);
+            EditorGUILayout.PropertyField(m_RecalculateOnLoad);
 
             serializedObject.ApplyModifiedProperties();
         }
@@ -110,7 +110,7 @@ namespace SorangonToolset.ArtToolset.Editors {
         }
 
         protected void SetComputeFlagUp() {
-            m_computeTextureFlag = true;
+            m_ComputeTextureFlag = true;
         }
 
         //protected void SetRecreateTextureFlagUp() {

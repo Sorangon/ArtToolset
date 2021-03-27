@@ -2,7 +2,7 @@
     using UnityEditor;
     using UnityEngine;
 
-    public class GeneratedTexture1DEditor : GeneratedTextureEditor {
+    public class CurveTextureEditor : GeneratedTextureEditor {
         #region Serialized Properties
         private SerializedProperty m_mappingProp = null;
         private SerializedProperty m_invertProp = null;
