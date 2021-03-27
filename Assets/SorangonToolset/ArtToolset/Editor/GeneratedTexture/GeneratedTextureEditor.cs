@@ -19,6 +19,11 @@ namespace SorangonToolset.ArtToolset.Editors {
         }
         #endregion
 
+        /// <summary>
+        /// If this value is negative, the height will not be overriden
+        /// </summary>
+        protected virtual float m_OverridenPreviewTextureHeight => -1;
+
         #region Currents
         private MethodInfo m_ComputeTextureMethod = null;
         private MethodInfo m_UpdateTextureMethod = null;
@@ -26,19 +31,23 @@ namespace SorangonToolset.ArtToolset.Editors {
         private SerializedProperty m_RecalculateOnLoad = null;
         private bool m_ComputeTextureFlag = false;
         //private bool m_recreateTextureFlag = false;
+        private Texture2D m_CurrentTexture = null;
         #endregion
 
         #region Callbacks
-        private void OnEnable() {
+        protected virtual void OnEnable() {
             FindProperties();
             m_ComputeTextureMethod = typeof(GeneratedTexture).GetMethod("ComputeTexture", BindingFlags.NonPublic | BindingFlags.Instance);
             m_UpdateTextureMethod = typeof(GeneratedTexture).GetMethod("UpdateTexture", BindingFlags.NonPublic | BindingFlags.Instance);
             m_GeneratedTextureField = typeof(GeneratedTexture).GetField("m_Texture", BindingFlags.NonPublic | BindingFlags.Instance);
             m_RecalculateOnLoad = serializedObject.FindProperty("m_RecalculateOnLoad");
+
+            m_CurrentTexture = m_GeneratedTextureField.GetValue(target) as Texture2D;
+
             Undo.undoRedoPerformed += OnPerformUndoRedo;
         }
 
-        private void OnDisable() {
+        protected virtual void OnDisable() {
             Undo.undoRedoPerformed -= OnPerformUndoRedo;
         }
 
@@ -71,6 +80,8 @@ namespace SorangonToolset.ArtToolset.Editors {
             EditorGUILayout.PropertyField(m_RecalculateOnLoad);
 
             serializedObject.ApplyModifiedProperties();
+
+            PreviewTexture();
         }
 
         protected virtual void DrawInspector() { }
@@ -180,7 +191,32 @@ namespace SorangonToolset.ArtToolset.Editors {
         #region Undo
         private void OnPerformUndoRedo() {
             SetComputeFlagUp();
-            //SetRecreateTextureFlagUp();
+        }
+        #endregion
+
+        #region Utility
+        private void PreviewTexture() {
+            if (m_CurrentTexture == null) {
+                EditorGUILayout.HelpBox("Cannot display texture. Ensure this one is generated correrctly !", MessageType.Error);
+                return;
+            }
+
+            GUILayout.Space(20);
+            EditorGUILayout.LabelField("Generated", new GUIStyle("Label") { alignment = TextAnchor.MiddleCenter, fontSize = 14, fontStyle = FontStyle.Bold });
+
+
+            Rect lastRect = GUILayoutUtility.GetLastRect();
+
+            float height;
+            if (m_OverridenPreviewTextureHeight > 0) {
+                height = m_OverridenPreviewTextureHeight;
+            } else {
+                height = lastRect.width - 40;
+            }
+
+            Rect newRect = new Rect(lastRect.x + 20, lastRect.y + 25, lastRect.width - 40, height);
+            EditorGUI.DrawPreviewTexture(newRect, m_CurrentTexture);
+            GUILayout.Space(1000);
         }
         #endregion
     }

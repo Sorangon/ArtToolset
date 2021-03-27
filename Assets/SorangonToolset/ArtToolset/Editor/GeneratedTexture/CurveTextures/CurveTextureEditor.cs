@@ -14,6 +14,10 @@
         }
         #endregion
 
+        #region Properties
+        protected override float m_OverridenPreviewTextureHeight => 30f;
+        #endregion
+
         #region Drawing
         protected override void DrawInspector() {
             base.DrawInspector();

@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!28 &-5953036419631157872
+Texture2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: C_Test_Texture
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  serializedVersion: 2
+  m_Width: 512
+  m_Height: 1
+  m_CompleteImageSize: 1024
+  m_TextureFormat: 9
+  m_MipCount: 1
+  m_IsReadable: 1
+  m_IgnoreMasterTextureLimit: 0
+  m_IsPreProcessed: 0
+  m_StreamingMipmaps: 0
+  m_StreamingMipmapsPriority: 0
+  m_AlphaIsTransparency: 0
+  m_ImageCount: 1
+  m_TextureDimension: 2
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_LightmapFormat: 0
+  m_ColorSpace: 0
+  image data: 1024
+  _typelessdata: 0000020006000e001800260036004a0060007a009600b500d700fc0023014e017b01ab01de0114024c028702c502050349038e03d70322046f04c00412056805c0051a067706d60638079c0703086c08d8084609b609290a9e0a150b8f0b0b0c890c090d8c0d110e980e210fad0f3a10ca105c11f01186121e13b8135514f31493153516da1680172818d2187e192c1adb1a8d1b401cf61cad1d651e201fdc1f9a205a211c22df22a4236a243225fc25c726942763283329052ad82aad2b832c5a2d332e0e2fea2fc730a631863268334a342e351436fb36e337cc38b639a23a8f3b7d3c6c3d5d3e4e3f414035412a42204317440f4508460247fd47f948f649f44af34bf34cf44df54ef84ffb50ff5104530a54105518562057285832593c5a475b525c5e5d6b5e785f86609461a362b363c364d465e566f66708691b6a2e6b416c556d696e7d6f9270a771bd72d273e874ff7515772c7843795a7a717b897ca07db87ed07fe8800082188330844885608678879088a989c18ad98bf08c088e208f37904f9166927d939494aa95c096d697ec98029a179b2c9c409d549e689f7ca08fa1a1a2b3a3c5a4d6a5e7a6f7a707a916aa25ab33ac40ad4dae59af65b070b17ab284b38db495b59cb6a3b7a9b8aeb9b2bab6bbb8bcbabdbbbebbbfbac0b8c1b6c2b2c3adc4a8c5a1c699c791c887c97cca70cb63cc55cd46ce35cf24d011d1fdd1e8d2d1d3bad4a1d586d66bd74ed830d910daefdacddba9dc84dd5ede36df0ce0e1e0b5e187e257e326e4f3e4bfe589e652e719e8dee8a2e964ea24ebe2eb9fec53ed1dec09e861e16dd877cdcac0adb26ba34c939b82a171a660f54fd63f94307722ca15d40ae1010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006c00460127020f03ff03f604f305f80604081709300a500b760ca30dd60e10104f119412e01331158816e4174619ae1a1a1c8c1d031f7f20002286231125a0263428cc29682b092dae2e57300332b43368352037dc389b3a5d3c233eeb3fb741864357452c470349dc4ab84c974e77505a523f5425560e58f859e45bd25dc15fb161a36396658a677f69756b6b6d626f5a7153734b7544773d79377b307d297f22811a8312850a870189f78aed8ce28ed590c892b994a9969898859a709c5a9e42a028a20ca4efa5cea7aca987ab60ad36af0ab1dab2a8b473b63bb8ffb9c0bb7ebd39bff0c0a3c252c4fec5a6c749c9e9ca84cc1aceadcf3ad1c4d248d4c7d542d7b7d828da93dbf8dc59deb4df09e158e2a1e3e5e423e65ae78be8b6e9daeaf8eb0fed20ee2aef2cf028f11df20af3f0f3cff4a6f575f63df7fdf7b5f865f90dfaacfa44fbd3fb59fcd7fc4cfdb9fd1cfe76fec8fe10ff4fff84ffb0ffd2ffebfffaff
+  m_StreamData:
+    offset: 0
+    size: 0
+    path: 
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea08b5ef82593984db709e0342175a8c, type: 3}
+  m_Name: C_Test
+  m_EditorClassIdentifier: 
+  m_Texture: {fileID: -5953036419631157872}
+  m_RecalculateOnLoad: 0
+  m_mapping: 0
+  m_invert: 0
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5661534
+      value: 0.9268029
+      inSlope: 1.4559311
+      outSlope: 1.4559311
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.60923153
+      value: -0.039400578
+      inSlope: 0.17266831
+      outSlope: 0.17266831
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

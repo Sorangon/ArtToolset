@@ -1,7 +1,6 @@
 ﻿//Created by Julien Delaunay (Sorangon)
 //Repository link : https://github.com/Sorangon/ArtToolset
 
-
 namespace SorangonToolset.ArtToolset.Editors {
     using UnityEngine;
     using UnityEditor;

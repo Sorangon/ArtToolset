@@ -12,7 +12,6 @@ namespace SorangonToolset.ArtToolset {
     public class RampTexture : CurveTexture {
         #region Settings
         [SerializeField, GradientUsage(true)] public Gradient ramp = new Gradient();
-
         #endregion
 
         #region Texture
