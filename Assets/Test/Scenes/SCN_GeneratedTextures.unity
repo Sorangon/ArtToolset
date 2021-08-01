@@ -161,7 +161,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 536066486}
-  m_Text: Ramp  Texture
+  m_Text: Ramp Texture
   m_OffsetZ: 0
   m_CharacterSize: 0.04
   m_LineSpacing: 1
@@ -334,7 +334,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 944672793}
-  m_Text: Curve  Texture
+  m_Text: Curve Texture
   m_OffsetZ: 0
   m_CharacterSize: 0.04
   m_LineSpacing: 1

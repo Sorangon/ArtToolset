@@ -5,8 +5,8 @@ namespace SorangonToolset.ArtToolset.Editors {
     using UnityEditor;
     using UnityEngine;
 
-    [CustomEditor(typeof(CurveAtlas))]
-    public class CurveAtlasEditor : GeneratedTextureEditor {
+    [CustomEditor(typeof(GradientAtlas))]
+    public class GradientAtlasEditor : GeneratedTextureEditor {
         #region Currents
         private SerializedProperty m_CurvesProp = null;
         private SerializedProperty m_ResolutionProp = null;
@@ -33,7 +33,7 @@ namespace SorangonToolset.ArtToolset.Editors {
 
         protected override void FindProperties() {
             base.FindProperties();
-            m_CurvesProp = serializedObject.FindProperty("m_Curves");
+            m_CurvesProp = serializedObject.FindProperty("m_Gradients");
             m_ResolutionProp = serializedObject.FindProperty("m_Resolution");
         }
 
@@ -60,17 +60,12 @@ namespace SorangonToolset.ArtToolset.Editors {
             m_ResolutionProp.intValue = Mathf.RoundToInt(Mathf.Pow(2, id + 4));
 
             if (EditorGUI.EndChangeCheck()) {
-                Debug.Log("Value changed");
                 CheckIfAtlasTooSmall();
+                SetComputeFlagUp();
             }
 
             serializedObject.ApplyModifiedProperties();
             base.DrawInspector();
-
-            EditorGUILayout.Space();
-            if (GUILayout.Button("Generate")) {
-                SetComputeFlagUp();
-            }
         }
         #endregion
 

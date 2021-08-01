@@ -25,10 +25,10 @@ namespace SorangonToolset.ArtToolset {
         /// <param name="recompute">Should the texture should be recomputed, in case a parameter had been changed</param>
         /// <returns></returns>
         public Texture2D GetTexture(bool recompute = false) {
-            bool generateTexture = ReferenceEquals(m_Texture, null);
+            bool generateTexture = m_Texture == null;
             if(generateTexture) {
 #if UNITY_EDITOR
-                UpdateTexture();
+                RegenerateTexture();
 #else
                 m_Texture = CreateTexture();
 #endif
@@ -55,7 +55,7 @@ namespace SorangonToolset.ArtToolset {
         #endregion
 
 #if UNITY_EDITOR
-        private void UpdateTexture() {
+        private void RegenerateTexture() {
             m_Texture = CreateTexture();
         }
 #endif

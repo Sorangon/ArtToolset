@@ -15,7 +15,7 @@
         #endregion
 
         #region Properties
-        protected override float m_OverridenPreviewTextureHeight => 30f;
+        protected override float m_OverridenPreviewTextureHeight => 20;
         #endregion
 
         #region Drawing

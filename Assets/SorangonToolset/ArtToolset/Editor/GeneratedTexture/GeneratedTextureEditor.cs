@@ -11,6 +11,11 @@ namespace SorangonToolset.ArtToolset.Editors {
     /// The base class for Generated textures custom editors 
     /// </summary>
     public abstract class GeneratedTextureEditor : Editor {
+        #region Constants
+        private const float MAX_PREVIEW_HEIGHT = 400f;
+        private const float PREVIEW_PADDING = 20f;
+        #endregion
+
         #region Enums
         public enum BakeFormat {
             EXR,
@@ -32,13 +37,14 @@ namespace SorangonToolset.ArtToolset.Editors {
         private bool m_ComputeTextureFlag = false;
         //private bool m_recreateTextureFlag = false;
         private Texture2D m_CurrentTexture = null;
+        private Vector2 m_LastRectSize = Vector2.zero;
         #endregion
 
         #region Callbacks
         protected virtual void OnEnable() {
             FindProperties();
             m_ComputeTextureMethod = typeof(GeneratedTexture).GetMethod("ComputeTexture", BindingFlags.NonPublic | BindingFlags.Instance);
-            m_UpdateTextureMethod = typeof(GeneratedTexture).GetMethod("UpdateTexture", BindingFlags.NonPublic | BindingFlags.Instance);
+            m_UpdateTextureMethod = typeof(GeneratedTexture).GetMethod("RegenerateTexture", BindingFlags.NonPublic | BindingFlags.Instance);
             m_GeneratedTextureField = typeof(GeneratedTexture).GetField("m_Texture", BindingFlags.NonPublic | BindingFlags.Instance);
             m_RecalculateOnLoad = serializedObject.FindProperty("m_RecalculateOnLoad");
 
@@ -64,7 +70,7 @@ namespace SorangonToolset.ArtToolset.Editors {
             //    m_recreateTextureFlag = false;
             //}
 
-            if(m_ComputeTextureFlag) {
+            if (m_ComputeTextureFlag) {
                 serializedObject.ApplyModifiedPropertiesWithoutUndo();
                 m_ComputeTextureMethod.Invoke(target, null);
                 m_ComputeTextureFlag = false;
@@ -80,8 +86,9 @@ namespace SorangonToolset.ArtToolset.Editors {
             EditorGUILayout.PropertyField(m_RecalculateOnLoad);
 
             serializedObject.ApplyModifiedProperties();
+            GUILayout.Space(20);
 
-            PreviewTexture();
+            DrawPreview();
         }
 
         protected virtual void DrawInspector() { }
@@ -102,14 +109,14 @@ namespace SorangonToolset.ArtToolset.Editors {
             //Checks if the texture subobject already exists
             Texture2D textureObject = null;
             var assets = AssetDatabase.LoadAllAssetsAtPath(path);
-            for(int i = 0; i < assets.Length; i++) {
-                if(assets[i] is Texture2D) {
+            for (int i = 0; i < assets.Length; i++) {
+                if (assets[i] is Texture2D) {
                     textureObject = assets[i] as Texture2D;
                     break;
                 }
             }
 
-            if(textureObject == null) {
+            if (textureObject == null) {
                 //Create a new one
                 textureObject = gt.GetTexture(true);
                 AssetDatabase.AddObjectToAsset(textureObject, gt);
@@ -124,6 +131,10 @@ namespace SorangonToolset.ArtToolset.Editors {
             m_ComputeTextureFlag = true;
         }
 
+        protected void UpdateTexture() {
+            m_UpdateTextureMethod.Invoke(target, null);
+        }
+
         //protected void SetRecreateTextureFlagUp() {
         //    m_recreateTextureFlag = true;
         //}
@@ -131,15 +142,15 @@ namespace SorangonToolset.ArtToolset.Editors {
 
         #region Panels
         private void DrawBakeButtons() {
-            if(GUILayout.Button("Bake PNG")) {
+            if (GUILayout.Button("Bake PNG")) {
                 BakeTexture(BakeFormat.PNG);
             }
 
-            if(GUILayout.Button("Bake JPEG")) {
+            if (GUILayout.Button("Bake JPEG")) {
                 BakeTexture(BakeFormat.JPEG);
             }
 
-            if(GUILayout.Button("Bake EXR")) {
+            if (GUILayout.Button("Bake EXR")) {
                 BakeTexture(BakeFormat.EXR);
             }
         }
@@ -150,7 +161,7 @@ namespace SorangonToolset.ArtToolset.Editors {
             //Get save path
             string extension = format.ToString();
             string projectPath = EditorUtility.SaveFilePanelInProject("Bake texture" + extension, target.name, extension.ToLower(), "Bake the texture in " + extension + " format");
-            if(projectPath.Length <= 0) return;
+            if (projectPath.Length <= 0) return;
             string path = projectPath.Remove(0, 6); //Remove "Assets" characters
             path = Application.dataPath + path; //Final path
 
@@ -158,7 +169,7 @@ namespace SorangonToolset.ArtToolset.Editors {
             //Encode texture
             byte[] encodedTexture = { };
             Texture2D srcTex = ((GeneratedTexture)target).GetTexture(true);
-            switch(format) {
+            switch (format) {
                 case BakeFormat.PNG:
                     encodedTexture = srcTex.EncodeToPNG();
                     break;
@@ -195,28 +206,39 @@ namespace SorangonToolset.ArtToolset.Editors {
         #endregion
 
         #region Utility
-        private void PreviewTexture() {
+        private void DrawPreview() {
+            EditorGUILayout.BeginVertical("HelpBox");
             if (m_CurrentTexture == null) {
                 EditorGUILayout.HelpBox("Cannot display texture. Ensure this one is generated correrctly !", MessageType.Error);
                 return;
             }
 
-            GUILayout.Space(20);
-            EditorGUILayout.LabelField("Generated", new GUIStyle("Label") { alignment = TextAnchor.MiddleCenter, fontSize = 14, fontStyle = FontStyle.Bold });
-
+            EditorGUILayout.LabelField("Preview", new GUIStyle("Label") { alignment = TextAnchor.MiddleCenter, fontSize = 14, fontStyle = FontStyle.Bold });
 
             Rect lastRect = GUILayoutUtility.GetLastRect();
+            if (Event.current.type == EventType.Repaint) {
+                if (m_OverridenPreviewTextureHeight > 0) {
+                    m_LastRectSize.x = lastRect.width;
+                    m_LastRectSize.y = m_OverridenPreviewTextureHeight + PREVIEW_PADDING;
+                } else {
+                    m_LastRectSize.y = lastRect.width;
+                    if (m_LastRectSize.y > MAX_PREVIEW_HEIGHT) {
+                        m_LastRectSize.y = MAX_PREVIEW_HEIGHT;
+                        m_LastRectSize.x = MAX_PREVIEW_HEIGHT;
+                    } else {
+                        m_LastRectSize.x = lastRect.width;
+                    }
+                }
 
-            float height;
-            if (m_OverridenPreviewTextureHeight > 0) {
-                height = m_OverridenPreviewTextureHeight;
-            } else {
-                height = lastRect.width - 40;
+                Rect newRect = new Rect(lastRect.x + PREVIEW_PADDING * 0.5f + Mathf.Max(lastRect.width - m_LastRectSize.x, 0f) * 0.5f
+                    , lastRect.y + 25, m_LastRectSize.x - PREVIEW_PADDING, m_LastRectSize.y - PREVIEW_PADDING);
+
+                EditorGUI.DrawPreviewTexture(newRect, m_CurrentTexture);
             }
 
-            Rect newRect = new Rect(lastRect.x + 20, lastRect.y + 25, lastRect.width - 40, height);
-            EditorGUI.DrawPreviewTexture(newRect, m_CurrentTexture);
-            GUILayout.Space(1000);
+            GUILayout.Space(m_LastRectSize.y);
+
+            EditorGUILayout.EndVertical();
         }
         #endregion
     }
