@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MAT_CurveTextureTest
+  m_Name: MAT_GradientAtlasTest
   m_Shader: {fileID: 10750, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 413461994046167751, guid: dfaaf137d471cf44cbde005fc89a7ac6,
+        m_Texture: {fileID: 8064747568908839792, guid: 24d751d069146df4dad9cd3ccf2430b1,
           type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
