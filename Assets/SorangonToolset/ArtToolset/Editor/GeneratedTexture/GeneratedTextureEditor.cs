@@ -31,11 +31,9 @@ namespace SorangonToolset.ArtToolset.Editors {
 
         #region Currents
         private MethodInfo m_ComputeTextureMethod = null;
-        private MethodInfo m_UpdateTextureMethod = null;
         private FieldInfo m_GeneratedTextureField = null;
         private SerializedProperty m_RecalculateOnLoad = null;
         private bool m_ComputeTextureFlag = false;
-        //private bool m_recreateTextureFlag = false;
         private Texture2D m_CurrentTexture = null;
         private Vector2 m_LastRectSize = Vector2.zero;
         #endregion
@@ -44,7 +42,6 @@ namespace SorangonToolset.ArtToolset.Editors {
         protected virtual void OnEnable() {
             FindProperties();
             m_ComputeTextureMethod = typeof(GeneratedTexture).GetMethod("ComputeTexture", BindingFlags.NonPublic | BindingFlags.Instance);
-            m_UpdateTextureMethod = typeof(GeneratedTexture).GetMethod("RegenerateTexture", BindingFlags.NonPublic | BindingFlags.Instance);
             m_GeneratedTextureField = typeof(GeneratedTexture).GetField("m_Texture", BindingFlags.NonPublic | BindingFlags.Instance);
             m_RecalculateOnLoad = serializedObject.FindProperty("m_RecalculateOnLoad");
 
@@ -61,14 +58,6 @@ namespace SorangonToolset.ArtToolset.Editors {
             serializedObject.Update();
 
             DrawInspector();
-
-            //TODO : Fix reference loss
-            //if(m_recreateTextureFlag) {
-            //    serializedObject.ApplyModifiedPropertiesWithoutUndo();
-            //    m_updateTextureMethod.Invoke(target, null);
-            //    SetupTextureAsset(target as GeneratedTexture);
-            //    m_recreateTextureFlag = false;
-            //}
 
             if (m_ComputeTextureFlag) {
                 serializedObject.ApplyModifiedPropertiesWithoutUndo();
@@ -130,14 +119,6 @@ namespace SorangonToolset.ArtToolset.Editors {
         protected void SetComputeFlagUp() {
             m_ComputeTextureFlag = true;
         }
-
-        protected void UpdateTexture() {
-            m_UpdateTextureMethod.Invoke(target, null);
-        }
-
-        //protected void SetRecreateTextureFlagUp() {
-        //    m_recreateTextureFlag = true;
-        //}
         #endregion
 
         #region Panels

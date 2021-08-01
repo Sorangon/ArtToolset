@@ -13,6 +13,9 @@ namespace SorangonToolset.ArtToolset {
 
         protected override void ComputeTexture() {
             int rows = Mathf.Min(m_Gradients.Length, m_Resolution);
+
+            m_Texture.Resize(m_Resolution, m_Resolution);
+
 #if UNITY_EDITOR
             if (!Application.isPlaying) {
                 m_Texture.SetPixels(new Color[m_Resolution * m_Resolution]);
@@ -28,9 +31,10 @@ namespace SorangonToolset.ArtToolset {
         }
 
         protected override Texture2D CreateTexture() {
-            Texture2D tex = new Texture2D(m_Resolution, m_Resolution);
+            Texture2D tex = new Texture2D(m_Resolution, m_Resolution, TextureFormat.RGBA32, false);
             tex.wrapMode = TextureWrapMode.Clamp;
             tex.filterMode = FilterMode.Bilinear;
+            tex.anisoLevel = 0;
             return tex;
         }
     }
