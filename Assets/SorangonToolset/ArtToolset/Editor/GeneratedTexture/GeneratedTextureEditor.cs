@@ -171,12 +171,6 @@ namespace SorangonToolset.ArtToolset.Editors {
             Texture newTex = AssetDatabase.LoadAssetAtPath(projectPath, typeof(Texture2D)) as Texture2D;
             EditorGUIUtility.PingObject(newTex);
             Selection.activeObject = newTex;
-            //bool wontReplace = EditorUtility.DisplayDialog("Replace references", "Would you replace all the references of the source generated texture to the baked one on assets ?", "No", "Replace");
-            //if(!wontReplace) {
-            //    string targetAssetPath = AssetDatabase.GetAssetPath(m_generatedTextureField.GetValue(target) as Texture2D);
-            //    Debug.Log("Replace all references to the texture at path : " + targetAssetPath);
-            //    Hash128 dependenciesHash = AssetDatabase.GetAssetDependencyHash(targetAssetPath);
-            //}
         }
         #endregion
 

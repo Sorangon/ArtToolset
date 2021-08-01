@@ -4,12 +4,10 @@
 
     public class CurveTextureEditor : GeneratedTextureEditor {
         #region Serialized Properties
-        private SerializedProperty m_mappingProp = null;
         private SerializedProperty m_invertProp = null;
 
         protected override void FindProperties() {
             base.FindProperties();
-            m_mappingProp = serializedObject.FindProperty("m_mapping");
             m_invertProp = serializedObject.FindProperty("m_invert");
         }
         #endregion
@@ -21,14 +19,6 @@
         #region Drawing
         protected override void DrawInspector() {
             base.DrawInspector();
-
-            //TODO : Fix reference loss
-            //EditorGUI.BeginChangeCheck();
-            //EditorGUILayout.PropertyField(m_mappingProp);
-            //if(EditorGUI.EndChangeCheck()) {
-            //    SetComputeFlagUp();
-            //    SetRecreateTextureFlagUp();
-            //}
 
             EditorGUI.BeginChangeCheck();
             EditorGUILayout.PropertyField(m_invertProp);

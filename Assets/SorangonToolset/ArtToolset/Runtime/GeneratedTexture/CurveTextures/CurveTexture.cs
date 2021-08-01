@@ -43,8 +43,8 @@ namespace SorangonToolset.ArtToolset {
         protected override Texture2D CreateTexture() {
             Debug.Log("Created new texture");
 
-            int xDim = m_mapping == Mapping.Horizontal ? 512 : 1;
-            int yDim = m_mapping == Mapping.Horizontal ? 1 : 512;
+            int xDim = m_mapping == Mapping.Horizontal ? 128 : 1;
+            int yDim = m_mapping == Mapping.Horizontal ? 1 : 128;
 
             return new Texture2D(xDim, yDim, GetTextureFormat(), false) {
                 wrapMode = TextureWrapMode.Clamp
