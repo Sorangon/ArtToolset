@@ -16,8 +16,8 @@ MonoBehaviour:
   m_RecalculateOnLoad: 0
   m_Gradients:
   - serializedVersion: 2
-    key0: {r: 1, g: 0.86555463, b: 0.6933962, a: 1}
-    key1: {r: 1, g: 0, b: 0, a: 1}
+    key0: {r: 1.5157166, g: 1.2779571, b: 1.0520856, a: 1}
+    key1: {r: 0.26606274, g: 0, b: 1, a: 1}
     key2: {r: 0.11320752, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -26,15 +26,15 @@ MonoBehaviour:
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
     ctime1: 27178
-    ctime2: 65535
+    ctime2: 62644
     ctime3: 0
     ctime4: 0
     ctime5: 0
     ctime6: 0
     ctime7: 0
     atime0: 0
-    atime1: 65535
-    atime2: 0
+    atime1: 39321
+    atime2: 63608
     atime3: 0
     atime4: 0
     atime5: 0
@@ -42,27 +42,27 @@ MonoBehaviour:
     atime7: 0
     m_Mode: 0
     m_NumColorKeys: 3
-    m_NumAlphaKeys: 2
+    m_NumAlphaKeys: 3
   - serializedVersion: 2
     key0: {r: 1, g: 0.9862553, b: 0.69411767, a: 1}
     key1: {r: 1, g: 0, b: 0, a: 1}
     key2: {r: 0.11320752, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0.11320752, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
-    ctime1: 27178
-    ctime2: 65535
-    ctime3: 0
+    ctime1: 32189
+    ctime2: 57825
+    ctime3: 55898
     ctime4: 0
     ctime5: 0
     ctime6: 0
     ctime7: 0
     atime0: 0
-    atime1: 65535
-    atime2: 0
+    atime1: 37394
+    atime2: 63993
     atime3: 0
     atime4: 0
     atime5: 0
@@ -70,7 +70,7 @@ MonoBehaviour:
     atime7: 0
     m_Mode: 0
     m_NumColorKeys: 3
-    m_NumAlphaKeys: 2
+    m_NumAlphaKeys: 3
   - serializedVersion: 2
     key0: {r: 0.70287514, g: 1, b: 0.69411767, a: 1}
     key1: {r: 0.3803922, g: 1, b: 0.8870574, a: 1}
@@ -81,16 +81,16 @@ MonoBehaviour:
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
-    ctime1: 22745
-    ctime2: 46646
-    ctime3: 65535
+    ctime1: 14456
+    ctime2: 31418
+    ctime3: 58018
     ctime4: 0
     ctime5: 0
     ctime6: 0
     ctime7: 0
     atime0: 0
-    atime1: 65535
-    atime2: 0
+    atime1: 40863
+    atime2: 63608
     atime3: 0
     atime4: 0
     atime5: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
     atime7: 0
     m_Mode: 0
     m_NumColorKeys: 4
-    m_NumAlphaKeys: 2
+    m_NumAlphaKeys: 3
   - serializedVersion: 2
     key0: {r: 1, g: 0.9533574, b: 0.69411767, a: 1}
     key1: {r: 1, g: 0.8093459, b: 0.3803922, a: 1}
@@ -110,15 +110,15 @@ MonoBehaviour:
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
     ctime1: 22745
-    ctime2: 46646
-    ctime3: 65535
+    ctime2: 42598
+    ctime3: 55512
     ctime4: 0
     ctime5: 0
     ctime6: 0
     ctime7: 0
     atime0: 0
-    atime1: 65535
-    atime2: 0
+    atime1: 48573
+    atime2: 63800
     atime3: 0
     atime4: 0
     atime5: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
     atime7: 0
     m_Mode: 0
     m_NumColorKeys: 4
-    m_NumAlphaKeys: 2
+    m_NumAlphaKeys: 3
   - serializedVersion: 2
     key0: {r: 1, g: 0.69411767, b: 0.83950114, a: 1}
     key1: {r: 0.98179865, g: 0.3803922, b: 1, a: 1}
@@ -138,15 +138,15 @@ MonoBehaviour:
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
     ctime1: 22745
-    ctime2: 46646
-    ctime3: 65535
+    ctime2: 39899
+    ctime3: 52043
     ctime4: 0
     ctime5: 0
     ctime6: 0
     ctime7: 0
     atime0: 0
-    atime1: 65535
-    atime2: 0
+    atime1: 47224
+    atime2: 63415
     atime3: 0
     atime4: 0
     atime5: 0
@@ -154,7 +154,7 @@ MonoBehaviour:
     atime7: 0
     m_Mode: 0
     m_NumColorKeys: 4
-    m_NumAlphaKeys: 2
+    m_NumAlphaKeys: 3
   - serializedVersion: 2
     key0: {r: 1, g: 0.86147887, b: 0.69411767, a: 1}
     key1: {r: 0.11372549, g: 0, b: 0.10386517, a: 1}
@@ -173,8 +173,8 @@ MonoBehaviour:
     ctime6: 0
     ctime7: 0
     atime0: 0
-    atime1: 65535
-    atime2: 0
+    atime1: 44718
+    atime2: 64571
     atime3: 0
     atime4: 0
     atime5: 0
@@ -182,7 +182,7 @@ MonoBehaviour:
     atime7: 0
     m_Mode: 0
     m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
+    m_NumAlphaKeys: 3
   - serializedVersion: 2
     key0: {r: 0.79359984, g: 1, b: 0.319, a: 1}
     key1: {r: 0.4644606, g: 1, b: 0, a: 1}
@@ -194,15 +194,15 @@ MonoBehaviour:
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
     ctime1: 31418
-    ctime2: 65535
+    ctime2: 54163
     ctime3: 65535
     ctime4: 0
     ctime5: 0
     ctime6: 0
     ctime7: 0
     atime0: 0
-    atime1: 65535
-    atime2: 0
+    atime1: 43947
+    atime2: 64379
     atime3: 0
     atime4: 0
     atime5: 0
@@ -210,7 +210,7 @@ MonoBehaviour:
     atime7: 0
     m_Mode: 0
     m_NumColorKeys: 3
-    m_NumAlphaKeys: 2
+    m_NumAlphaKeys: 3
   - serializedVersion: 2
     key0: {r: 1, g: 0.86147887, b: 0.69411767, a: 1}
     key1: {r: 1, g: 0.5514491, b: 0.3803922, a: 1}
@@ -222,15 +222,15 @@ MonoBehaviour:
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
     ctime1: 17733
-    ctime2: 65535
+    ctime2: 51464
     ctime3: 65535
     ctime4: 65535
     ctime5: 0
     ctime6: 0
     ctime7: 0
     atime0: 0
-    atime1: 65535
-    atime2: 0
+    atime1: 44718
+    atime2: 64186
     atime3: 0
     atime4: 0
     atime5: 0
@@ -238,38 +238,38 @@ MonoBehaviour:
     atime7: 0
     m_Mode: 0
     m_NumColorKeys: 3
-    m_NumAlphaKeys: 2
+    m_NumAlphaKeys: 3
   - serializedVersion: 2
-    key0: {r: 0, g: 0.056962013, b: 1, a: 1}
-    key1: {r: 0.95486355, g: 0, b: 1, a: 1}
-    key2: {r: 0.11372549, g: 0, b: 0.10386517, a: 0}
-    key3: {r: 0.11372549, g: 0, b: 0.10386517, a: 0}
+    key0: {r: 0.91764706, g: 1.5607843, b: 2, a: 1}
+    key1: {r: 0, g: 0.6436324, b: 1, a: 1}
+    key2: {r: 0, g: 0.15949917, b: 1, a: 0}
+    key3: {r: 0, g: 0.05012792, b: 0.31132078, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
-    ctime1: 65535
-    ctime2: 65535
-    ctime3: 65535
+    ctime1: 22359
+    ctime2: 40092
+    ctime3: 55898
     ctime4: 0
     ctime5: 0
     ctime6: 0
     ctime7: 0
     atime0: 0
-    atime1: 65535
-    atime2: 0
+    atime1: 38357
+    atime2: 64571
     atime3: 0
     atime4: 0
     atime5: 0
     atime6: 0
     atime7: 0
     m_Mode: 0
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
+    m_NumColorKeys: 4
+    m_NumAlphaKeys: 3
   - serializedVersion: 2
     key0: {r: 0.69411767, g: 1, b: 0.9938183, a: 1}
-    key1: {r: 0.11372549, g: 0, b: 0.10386517, a: 1}
+    key1: {r: 0.12396771, g: 0.017647088, b: 0.119570255, a: 1}
     key2: {r: 0.11372549, g: 0, b: 0.10386517, a: 0}
     key3: {r: 0.11372549, g: 0, b: 0.10386517, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -277,7 +277,7 @@ MonoBehaviour:
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
-    ctime1: 65535
+    ctime1: 51464
     ctime2: 65535
     ctime3: 65535
     ctime4: 0
@@ -285,16 +285,16 @@ MonoBehaviour:
     ctime6: 0
     ctime7: 0
     atime0: 0
-    atime1: 65535
-    atime2: 0
+    atime1: 41441
+    atime2: 64186
     atime3: 0
     atime4: 0
     atime5: 0
     atime6: 0
     atime7: 0
     m_Mode: 0
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
+    m_NumColorKeys: 3
+    m_NumAlphaKeys: 3
   - serializedVersion: 2
     key0: {r: 1, g: 0.86147887, b: 0.69411767, a: 1}
     key1: {r: 0, g: 0, b: 0, a: 1}
@@ -313,8 +313,8 @@ MonoBehaviour:
     ctime6: 0
     ctime7: 0
     atime0: 0
-    atime1: 65535
-    atime2: 0
+    atime1: 38165
+    atime2: 64379
     atime3: 0
     atime4: 0
     atime5: 0
@@ -322,7 +322,7 @@ MonoBehaviour:
     atime7: 0
     m_Mode: 0
     m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
+    m_NumAlphaKeys: 3
   - serializedVersion: 2
     key0: {r: 1, g: 0.86147887, b: 0.69411767, a: 1}
     key1: {r: 1, g: 0.5514491, b: 0.3803922, a: 1}
@@ -333,16 +333,16 @@ MonoBehaviour:
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
-    ctime1: 33731
-    ctime2: 54741
-    ctime3: 65535
+    ctime1: 26985
+    ctime2: 47031
+    ctime3: 61680
     ctime4: 0
     ctime5: 0
     ctime6: 0
     ctime7: 0
     atime0: 0
-    atime1: 65535
-    atime2: 0
+    atime1: 50693
+    atime2: 64764
     atime3: 0
     atime4: 0
     atime5: 0
@@ -350,7 +350,7 @@ MonoBehaviour:
     atime7: 0
     m_Mode: 0
     m_NumColorKeys: 4
-    m_NumAlphaKeys: 2
+    m_NumAlphaKeys: 3
   - serializedVersion: 2
     key0: {r: 1.1486983, g: 0.97751975, b: 0.7657989, a: 1}
     key1: {r: 1.5157166, g: 0.53955853, b: 0, a: 1}
@@ -363,14 +363,14 @@ MonoBehaviour:
     ctime0: 0
     ctime1: 19853
     ctime2: 40670
-    ctime3: 65535
+    ctime3: 62066
     ctime4: 0
     ctime5: 0
     ctime6: 0
     ctime7: 0
     atime0: 0
-    atime1: 65535
-    atime2: 0
+    atime1: 45104
+    atime2: 64379
     atime3: 0
     atime4: 0
     atime5: 0
@@ -378,7 +378,7 @@ MonoBehaviour:
     atime7: 0
     m_Mode: 0
     m_NumColorKeys: 4
-    m_NumAlphaKeys: 2
+    m_NumAlphaKeys: 3
   - serializedVersion: 2
     key0: {r: 0.4669811, g: 1, b: 0.8473745, a: 1}
     key1: {r: 0, g: 0.11372549, b: 0.071529426, a: 1}
@@ -397,8 +397,8 @@ MonoBehaviour:
     ctime6: 0
     ctime7: 0
     atime0: 0
-    atime1: 65535
-    atime2: 0
+    atime1: 41634
+    atime2: 64571
     atime3: 0
     atime4: 0
     atime5: 0
@@ -406,7 +406,7 @@ MonoBehaviour:
     atime7: 0
     m_Mode: 0
     m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
+    m_NumAlphaKeys: 3
   - serializedVersion: 2
     key0: {r: 0.7311321, g: 1, b: 0.75093144, a: 1}
     key1: {r: 0.3803922, g: 1, b: 0.77630955, a: 1}
@@ -418,15 +418,15 @@ MonoBehaviour:
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
     ctime1: 22745
-    ctime2: 46646
-    ctime3: 65535
+    ctime2: 41249
+    ctime3: 61873
     ctime4: 0
     ctime5: 0
     ctime6: 0
     ctime7: 0
     atime0: 0
-    atime1: 65535
-    atime2: 0
+    atime1: 42598
+    atime2: 64571
     atime3: 0
     atime4: 0
     atime5: 0
@@ -434,27 +434,27 @@ MonoBehaviour:
     atime7: 0
     m_Mode: 0
     m_NumColorKeys: 4
-    m_NumAlphaKeys: 2
+    m_NumAlphaKeys: 3
   - serializedVersion: 2
     key0: {r: 1, g: 0.86147887, b: 0.69411767, a: 1}
     key1: {r: 1, g: 0.5514491, b: 0.3803922, a: 1}
     key2: {r: 1, g: 0.050477777, b: 0, a: 0}
     key3: {r: 0.11372549, g: 0, b: 0.10386517, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0.11372549, g: 0, b: 0.10386517, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
-    ctime1: 22745
-    ctime2: 46646
-    ctime3: 65535
-    ctime4: 0
+    ctime1: 20817
+    ctime2: 39128
+    ctime3: 60716
+    ctime4: 65535
     ctime5: 0
     ctime6: 0
     ctime7: 0
     atime0: 0
-    atime1: 65535
-    atime2: 0
+    atime1: 44718
+    atime2: 64571
     atime3: 0
     atime4: 0
     atime5: 0
@@ -462,7 +462,7 @@ MonoBehaviour:
     atime7: 0
     m_Mode: 0
     m_NumColorKeys: 4
-    m_NumAlphaKeys: 2
+    m_NumAlphaKeys: 3
   m_Resolution: 16
 --- !u!28 &8064747568908839792
 Texture2D:
@@ -501,7 +501,7 @@ Texture2D:
   m_LightmapFormat: 0
   m_ColorSpace: 0
   image data: 1024
-  _typelessdata: ffdcb1ffffcda3ffffbf94ffffb186ffffa377ffff9469ffff835affff6d49ffff5738ffff4128ffff2b17ffff1506ffe10b04ffb00809ff7f060fff4e0315ffbaffbfffaaffc1ff9affc2ff8affc3ff7affc4ff6affc5ff5affc2ff49ffbaff38ffb2ff28ffaaff17ffa3ff06ff9bff01dd87ff04a66dff066f52ff093738ff77ffd8ff70f1ccff68e3bfff61d5b3ff59c7a7ff52b89aff4aaa8eff439c82ff3c8e75ff348069ff2d725cff256450ff1e5644ff164737ff0f392bff072b1ffffff9c3ffffe29bffffcb73ffffb44affff9d22ffff8600ffff6d00ffff5300ffff3a00ffff2100fffc0900ffd70800ffb20600ff8d0501ff670301ff420201ffffdcb1ffffd2a7ffffc89effffbf94ffffb58affffac80ffffa277ffff986dffff8f63ffff7a53ffff6140ffff482dffff2f1affff1607ffc90a00ff730500ffffdcb1ffefcea6ffdfc09bffcfb290ffbfa585ffaf977aff9f896fff8f7c64ff806e59ff70604dff605242ff504537ff40372cff302921ff201b16ff100e0bffb1fffdffa8efefff9fdfe1ff95cfd3ff8cbfc5ff83afb7ff7a9fa8ff708f9aff67808cff5e707eff556070ff4b5061ff424053ff393045ff302037ff261029ff000fffff0f0effff1e0dffff2e0cffff3d0bffff4c0affff5b09ffff6b08ffff7a07ffff8906ffff9805ffffa705ffffb704ffffc603ffffd502ffffe401ffffffdcb1ffffc99fffffb78cffffa57affff9367fff2855dffdf7857ffcb6c51ffb8604bffa55445ff91483fff7e3c39ff6a3033ff57242dff441827ff300c21ffcaff51ffbfff47ffb4ff3cffaaff32ff9fff27ff94ff1cff89ff12ff7eff07ff73f501ff68d604ff5db808ff53990bff487a0fff3d5c12ff323d15ff281f19ffffdcb1fff1cea8ffe3c09effd5b295ffc7a58bffb89782ffaa8979ff9c7c6fff8e6e66ff80605cff725253ff64454aff563740ff472937ff391b2dff2b0e24ffffb1d6fffea3ddfffd94e5fffc86ecfffc77f4fffb69fbfff05affffda49ffffc438ffffae28ffff9817ffff8106ffff6d00e1ff5900afff45007eff31004cfffff3b1ffffeca3ffffe694ffffdf86ffffd977ffffd269ffffc95affffbe49ffffb338ffffa828ffff9d17ffff9206ffe17b00ffb05e00ff7f4100ff4e2300ffb3ffb1ffa4ffbaff96ffc3ff87ffccff78ffd4ff69ffddff5afbe4ff49f3e9ff38ebeeff28e3f3ff17dbf8ff06d3fdff04b4e1ff0a87afff105a7eff172d4cfffffbb1ffffd696ffffb07cffff8a61ffff6446ffff3e2cffff1811fff60000ffde0000ffc60000ffae0000ff960000ff7d0000ff650000ff4d0000ff350000ffffddb1ffffbb96ffff9a7cffff7961ffff5846ffff362cffff1511fff60000ffde0000ffc60000ffae0000ff960000ff7d0000ff650000ff4d0000ff350000ff
+  _typelessdata: ffdcb1ffffcba0ffffbb90ffffaa7fffff9a6effff865cffff6845ffff492effff2b17ffff0d00ffd10a05ffa3080bd67605109f480215671d001a2f1d001a00baffbfffa9ffc1ff98ffc2ff87ffc3ff76ffc4ff65ffc6ff4fffbdff39ffb3ff22ffa8ff0bff9dff01e38af404ad70c20677568f08423c5d0b0c232a0b001d0077ffd8ff6ff0cbff67e1beff5fd2b1ff57c3a4ff50b496ff48a589ff40967cff38876fff307862ff286955ea205a48ba184b3a89103c2d59082d2029001e1300fff9c3ffffe198ffffc86effffb043ffff9718ffff7e00ffff6300ffff4800ffff2e00ffff1300ffe10800ffb30600da850401a1570201672901012e1d000100ffdcb1ffffcfa4ffffc297ffffb58affffa97dffff9c70ffff8f64ffff7650ffff5b3bffff3f26ffff2311fff20c00ffaf0800e36c040094290100461d000000ffdcb1ffeecda5ffddbf99ffccb08effbba182ffaa9376ff99846aff88765fff786753ff675847f5564a3bcb453b30a1342d2476231e184c120f0c2201010100b1fffdffa5eaebff98d5d8ff8cbfc5ff80aab2ff74959fff67808cff5b6b79ff4f5667ff424054ff362b41e82a162eb71f041e861f031d551e011c251d001b00eaffffffbcffffff8fffffff61ffffff34d8ffff06aaffff008affff006cffff004dffff002ffff70023d9cd001ba9a200137878000d4f4e000d4f23000d4f00ffdcb1ffffc89dffffb58affffa176ffff8e62ffe47c59ffc76a4fffaa5846ff8d453dff6f3334ff52212bff350f22d61d001a9d1d001a641d001a2b1d001a00caff51ffbfff46ffb3ff3bffa7ff30ff9cff24ff90ff19ff85ff0eff79ff02ff69d904ff58a80aff47770fff364714ce25161a981d001c611d001c2b1d001c00ffdcb1fff0cda7ffe1bf9dffd2b093ffc3a189ffb4937fffa58475ff96766bff876761ff785857ff694a4dff5a3b43d64b2d399f3c1e2f672d0f252f1e011b00ffb1d6fffea2defffd92e6fffc83eefffb74f5fffb64fdffe14effffc035ffff9f1dffff7e04ffff5d00bbff3d0069f51d001ab01d001a6c1d001a271d001a00fff3b1ffffeca2ffffe592ffffde83ffffd774ffffd064ffffc351ffffb53bffffa726ffff9811ffef8400ffa35600ff572800c21d0600791d0600301d060000b3ffb1ff9affc0ff82ffcfff69ffddff50f7e7ff37ebefff1edef6ff05d2fdff04b5e2ff0893bcff0d7197e1124f72b0172d4c801b0b274f1d001a1e1d001a00fffbb1ffffd999ffffb781ffff9569ffff7351ffff5139ffff2f21ffff0d09ffe80000ffc10000ee9b0000c47500009b4e000071280000471d00001d1d000000ffffffffffffffffffdeffffe9a9ffffb675ffff8341ffff500dffff4000e7ff3b00c8ff3700a9ff32008ad32d006aa528004b7824002c4a1f000c1c1d000000
   m_StreamData:
     offset: 0
     size: 0

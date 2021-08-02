@@ -23,7 +23,9 @@ namespace SorangonToolset.ArtToolset {
 #endif
             for (int y = 0; y < rows; y++) {
                 for (int x = 0; x < m_Resolution; x++) {
-                    m_Texture.SetPixel(x, m_Resolution - y - 1, m_Gradients[y].Evaluate((float)x / (float)m_Resolution));
+                    float t = (float)x / (float)m_Resolution;
+                    t += (1f / (float)m_Resolution) * t;
+                    m_Texture.SetPixel(x, m_Resolution - y - 1, m_Gradients[y].Evaluate(t));
                 }
             }
 
